@@ -13,3 +13,11 @@ type ProductBasic struct {
 func (table ProductBasic) TableName() string {
 	return "product_basic"
 }
+
+func ProductList(name string) *gorm.DB {
+	tx := DB.Debug().Model(new(ProductBasic)).Select("identity, name, `desc`, `key`, created_at")
+	if name != "" {
+		tx.Where("name LIKE ?", "%"+name+"%")
+	}
+	return tx
+}

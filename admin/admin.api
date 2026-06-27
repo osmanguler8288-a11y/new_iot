@@ -1,5 +1,36 @@
 syntax = "v1"
 
+service admin-api {
+	@handler DeviceListHandler
+	get /device/list (DeviceListRequest) returns (DeviceListReply)
+
+	@handler ProductListHandler
+	get /product/list (ProductListRequest) returns (ProductListReply)
+}
+
+type BaseRequest {
+	Page int    `json:"page,optional"`
+	Size int    `json:"size,optional"`
+	Name string `json:"name,optional"`
+}
+
+type ProductListRequest {
+	BaseRequest
+}
+
+type ProductListReply {
+	List  []*ProductListBasic `json:"list"`
+	Count int64               `json:"count"`
+}
+
+type ProductListBasic {
+	Identity  string `json:"identity"`
+	Key       string `json:"key"`
+	Name      string `json:"name"`
+	Desc      string `json:"desc"`
+	CreatedAt string `json:"created_at"`
+}
+
 type DeviceListRequest {
 	Page int    `json:"page,optional"`
 	Size int    `json:"size,optional"`
@@ -17,10 +48,5 @@ type DeviceListBasic {
 type DeviceListReply {
 	List  []*DeviceListBasic `json:"list"`
 	Count int64              `json:"count"`
-}
-
-service admin-api {
-	@handler DeviceListHandler
-	get /device/list (DeviceListRequest) returns (DeviceListReply)
 }
 

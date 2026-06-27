@@ -3,6 +3,7 @@ module new_iot
 go 1.25.0
 
 require (
+	github.com/eclipse/paho.mqtt.golang v1.5.1
 	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/zeromicro/go-zero v1.10.2
 	google.golang.org/grpc v1.80.0
@@ -33,6 +34,7 @@ require (
 	github.com/google/gnostic-models v0.7.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674 // indirect
 	github.com/grafana/pyroscope-go v1.3.0 // indirect
 	github.com/grafana/pyroscope-go/godeltaprof v0.1.10 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.7 // indirect
@@ -82,6 +84,7 @@ require (
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/net v0.50.0 // indirect
 	golang.org/x/oauth2 v0.34.0 // indirect
+	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 	golang.org/x/term v0.40.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
