@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"new_iot/define"
+	"strings"
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
@@ -108,4 +109,12 @@ func AnalyzeToken(token string) (*define.UserClaim, error) {
 		return uc, errors.New("token is invalid")
 	}
 	return uc, err
+}
+
+// RFC3339方法
+func RFC3339ToNormalTime(rfc3339 string) string {
+	if len(rfc3339) < 19 || rfc3339 == "" || !strings.Contains(rfc3339, "T") {
+		return rfc3339
+	}
+	return strings.Split(rfc3339, "T")[0] + " " + strings.Split(rfc3339, "T")[1][:8]
 }
