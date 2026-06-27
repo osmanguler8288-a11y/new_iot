@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"new_iot/define"
 	"strings"
@@ -79,7 +79,7 @@ func httpRequest(url, method string, data, header []byte) ([]byte, error) {
 	}
 	defer resp.Body.Close()
 
-	respBytes, err := ioutil.ReadAll(resp.Body)
+	respBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,8 @@ func httpRequest(url, method string, data, header []byte) ([]byte, error) {
 }
 
 func Md5(s string) string {
-	return fmt.Sprintf("%x", md5.Sum([]byte(s)))
+	sum := md5.Sum([]byte(s))
+	return fmt.Sprintf("%x", sum[:])
 }
 
 func If(condition bool, trueValue, falseValue interface{}) interface{} {

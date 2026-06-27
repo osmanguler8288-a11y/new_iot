@@ -1,0 +1,8 @@
+Name: device.rpc
+ListenOn: 0.0.0.0:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: device.rpc
+Mqtt:
+  Broker: "tcp://127.0.0.1:1883"
